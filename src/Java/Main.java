@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        // Part 1 of the puzzle:
         TextReader textReader = new TextReader(new File("src/Java/calories.txt"));
         ArrayList<Elf> elfList = new ArrayList<>();
         textReader.countCalories(elfList);
@@ -23,6 +24,14 @@ public class Main {
         for (Elf e : elfList) {
             System.out.println(e.toString());
         }
+        System.out.println("\nThe amount of calories of the elf carrying the most is = "+elfList.get(0).getCalories());
+
+        // Part 2 of the puzzle:
+        int topThreeCalorieSum = 0;
+        for (int i = 0; i < 3; i++) {
+            topThreeCalorieSum += elfList.get(i).getCalories();
+        }
+        System.out.println("The sum of calories of the three elves carrying the most is = "+topThreeCalorieSum);
     }
     public static void sort(ArrayList<Elf> list) {
         list.sort(Elf::compareTo);
